@@ -19,11 +19,10 @@ body {
   background-position: stretch;
   justify-content: center;
 }
-
+//boarder css
 .boardcontainer {
   max-height: 80vw;
   max-width: 80vw;
-  height: 250px;
   width: 250px;
   margin: 0 auto;
   display: grid;
@@ -37,13 +36,21 @@ body {
   //flex-wrap: wrap;
 }
 
+ .box {
+   justify-content: center;
+  text-align: center;
+  font-style: oblique;
+  font-size: 100px;
+  font-family: inherit;
+}
+//modal css
 .btn {
   margin: auto;
   background-color: black;
   color: white;
 
 }
-
+//Game Board css
 .board {
   width: 600px;
 }

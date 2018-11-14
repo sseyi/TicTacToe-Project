@@ -37,6 +37,13 @@ const logOut = event => {
     .then(ui.logOutSuccess)
     .catch(console.log)
 }
+
+
+const begin game = event => {
+  console.log('in onSignIn')
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
 module.exports = {
   onSignUp,
   onSignIn,
