@@ -1,35 +1,39 @@
-'use strict'
+const store = require('./store.js')
 
 const signUpSuccess = data => {
- $('#message').text('Signed up succesfully')
- $('#message').removeClass()
- $('#message').addClass('success')
- console.log('signUpSuccess ran. Data is:', data)
+  $('.sign-up-message').html('<p class="blue">Sign Up Successful!</p>')
+  console.log('signUpSuccess ran. Data is:', data)
 }
 
 const signUpFailure = error => {
-  $('#message').text('Error on Sign Up')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('.sign-up-message').html('<p class="red">Sign UP Successful!</p>')
   console.log('signUpFailure ran. Error is:', error)
 }
 const signInSuccess = data => {
- $('#message').text('Signed in succesfully')
- $('#message').removeClass()
- $('#message').addClass('success')
- console.log('signInSuccess ran. Data is:', data)
+  $('.sign-in-message').html('<p class="blue">Sign In Successful!</p>')
+  store.user = data.user
+  console.log('signInSuccess ran. Data is:', data)
 }
 
 const signInFailure = error => {
-  $('#message').text('Error on Sign In')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+  $('.sign-in-message').html('<p class="red">Sign In Unsuccessful</p>')
   console.log('signInFailure ran. Error is:', error)
+}
+const changePasswordSuccess = data => {
+  $('.sign-in-message').html('<p class="blue">Sign In Successful!</p>')
+  store.user = data.user
+  console.log('changePasswordSuccess ran. Data is:', data)
+}
+
+const changePasswordFailure = error => {
+  $('.change-password-message').html('<p class="red">Change Password Unsuccessful</p>')
+  console.log('changePasswordFailure ran. Error is:', error)
 }
 module.exports = {
 signUpSuccess,
 signUpFailure,
 signInSuccess,
 signInFailure,
-
+changePasswordSuccess,
+changePasswordFailure
 }

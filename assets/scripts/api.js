@@ -1,8 +1,9 @@
-'use strict'
 
-const config = require('../config.js')
+const store = require('./store.js')
+const config = require('./config.js')
 
 const signUp = data => {
+console.log(data)
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',
@@ -17,16 +18,29 @@ const signIn = data => {
     data: data
   })
 }
-const louOut = data => {
+
+const beginGame = () => {
   return $.ajax({
-    url: config.apiUrl + '/log-out',
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+const signOut = data => {
+  return $.ajax({
+    url: config.apiUrl + '/sign-out',
     method: 'DELETE',
-    data: data
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
 module.exports = {
   signUp,
   signIn,
-  logOut
+  beginGame,
+  signOut
 }

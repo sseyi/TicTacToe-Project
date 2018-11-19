@@ -13,6 +13,38 @@
     </head>
     <body>
       <button type="button" class="btn btn-primary" data-toggle="modal"
+     data-target="#signUpModal">Sign Up</button>
+<!-- Creating a sign up modal on my application-->
+     <div class="modal fade" id="signUpModal">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+
+             <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
+             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+
+           </div>
+           <div class="modal-body">
+             <!-- Adding sign up to body of modal-->
+             <form id="sign-up" class="border">
+               <fieldset>
+                 <legend>Sign Up!</legend>
+                 <input type="text" name="credentials[email]" placeholder="Email">
+                 <input type="password" name="credentials[password]" placeholder="Password">
+                  <input type="password" name="credentials[password_confirmation]" placeholder="Password">
+                 <input type="submit" value="Sign up!">
+               </fieldset>
+             </form>
+             <p class="sign-up-message"></p>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+           </div>
+         </div>
+       </div>
+     </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal"
            data-target="#signInModal">Sign In</button>
       <!-- Creating a sign in modal on my application-->
            <div class="modal fade" id="signInModal">
@@ -34,10 +66,10 @@
                        <input type="submit" value="Sign in!">
                      </fieldset>
                    </form>
+                    <p class="sign-in-message"></p>
                  </div>
                  <div class="modal-footer">
                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                   <button type="button" class="btn btn-primary">Sign In</button>
                  </div>
                </div>
              </div>
@@ -58,7 +90,7 @@
                           </div>
                           <div class="modal-body">
                             <!-- Adding change password  to body of modal-->
-                            <form id="change password" class="border">
+                            <form id="change-password" class="border">
                               <fieldset>
                                 <legend>Change Password!</legend>
                                 <input type="text" name="credentials[passwordl]" placeholder="New Password">
@@ -66,6 +98,7 @@
                                 <input type="submit" value="New Password!">
                               </fieldset>
                             </form>
+                             <p class="change-password-message"></p>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -74,6 +107,8 @@
                       </div>
                     </div>
                     <button type="button" class="btn btn-primary" data-toggle="modal"
+
+
      data-target="#signOutModal">Sign Out</button>
 <!-- Creating a sign out modal on my application-->
      <div class="modal fade" id="signOutModal">
@@ -93,6 +128,7 @@
                <input type="submit" value="Sign Out!">
                </fieldset>
              </form>
+              <p class="sign-out-message"></p>
            </div>
            <div class="modal-footer">
              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -108,34 +144,34 @@
    <!-- Adding title-->
     <div class="boardcontainer" >
     <!-- Adding game boxes-->
-                 <div id="0" class="box teal"></div>
-                 <div id="1"  class="box teal"></div>
-                 <div id="2"  class="box teal"></div>
-                 <div id="3"  class="box teal"></div>
-                 <div id="4" class="box teal"></div>
-                 <div id="5" class="box teal"></div>
-                 <div id="6" class="box teal"></div>
-                 <div id="7" class="box teal"></div>
-                 <div id="8" class="box teal"></div>
+                 <div id="0" class="box boxleft boxtop" ></div>
+                 <div id="1"  class="box boxtop"></div>
+                 <div id="2"  class="box boxtop boxright"></div>
+                 <div id="3"  class="box boxleft"></div>
+                 <div id="4" class="box"></div>
+                 <div id="5" class="box boxright"></div>
+                 <div id="6" class="box boxleft boxbottom"></div>
+                 <div id="7" class="box boxbottom"></div>
+                 <div id="8" class="box boxright boxbottom"></div>
     </div>
 
 <!-- Adding Restart Game-->
-      <form id="Begin Game">
+      <form id= "begin-game">
       <button type='submit' class='btn btn-default'>Begin Game</button>
       </form>
       <br>
 <!-- Adding Restart Game-->
-      <form id="Restart Game">
+      <form id="restart-game">
       <button type='submit' class='btn btn-default'>Restart Game</button>
       </form>
 <!-- Adding end game button-->
       <br>
-      <form id="End Game">
+      <form id="end-game">
       <button type='submit' class='btn btn-default'>End Game</button>
         </form>
         <!-- Adding end game button-->
               <br>
-              <form id="Log Out">
+              <form id="log-out">
               <button type='submit' class='btn btn-default'>Log Out</button>
                 </form>
 

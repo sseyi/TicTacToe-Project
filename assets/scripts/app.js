@@ -1,5 +1,5 @@
 'use strict'
-
+const event = require('./event.js')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -7,22 +7,39 @@
 // require('./example')
 
 $(() => {
+  $('#sign-up').on('submit', event.onSignUp)
+  $('#sign-in').on('submit', event.onSignIn)
+  $('#sign-out').on('submit', event.onSignOut)
+  $('#change-password').on('submit', event.changePassword)
+  $('#begin-game').on('submit', event.onBeginGame)
+  $('#restart-game').on('submit', event.onRestartGame)
+  $('#end-game').on('submit', event.onEndGame)
+  $('#log-out').on('submit', event.onLogOut)
+
   const player1 = 'X'
   const player2 = 'O'
   // defining player role
   let moves = 0
   let currentTurn = 'X'
 
+  const gameArray = ['', '', '', '', '', '', '', '', '']
+
   const winningCombinations = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
   // determined the winningCombinations on the board
 
-  $('.box').click(function () {
+  $('.box').click(function (event) {
     moves++
     console.log('clicked')
     // click event: when user clicks on
     const box = $(event.target)
+    console.log(box)
     if (box.text() === '') {
       box.html(currentTurn)
+      console.log(currentTurn)
+      console.log(event)
+      gameArray[event.currentTarget.id] = currentTurn
+
+
       winCheck()
       // when box is clicked will assign either 'X' or 'O'
       if (currentTurn === 'X') {
@@ -134,6 +151,7 @@ $(() => {
 // assigning the winningCombinations for 'X' in all rows
 
 // if move greater than 4 check winner
+
 
 // function allChecked(indexes) {
 //   return indexes.every(function(indexes){
