@@ -16,12 +16,7 @@ Game Initiation
 The Tic Tac Toe game will have an intro page: The displays a background image of a TIC TAC TOE
 The user will be prompted by a MODAL to "Log In"
 if user,  does not have login credentials the user will be prompted by a MODULE to register
-Once the login is success user will be prompted by a MODAL  "1 PLAYER OR 2 PLAYER"
-User will have to execute prompt for 1 player or 2 player
-1 player option will allow the user to be assigned as player 1 against the AI as an opponent
-2 player option will allow the 2 users to be assigned 1 player or player 2 against each other as opponents
-Once user(s) is assigned a player role  a MODAL will prompt the user to be assigned either "X" or "O"
-Once user(s) is assigned either "X" or "O" a  MODAL will prompt the user to begin the game.
+
 
 Game Play
 The game will continue until the player or player(s) to have they're assigned "X or "O" a row of 3 either
