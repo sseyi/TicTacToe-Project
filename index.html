@@ -12,7 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <button type="button" class="btn btn-primary" data-toggle="modal"
+      <button type="button" id='sign-up-button' class="btn btn-primary" data-toggle="modal"
      data-target="#signUpModal">Sign Up</button>
 <!-- Creating a sign up modal on my application-->
      <div class="modal fade" id="signUpModal">
@@ -22,19 +22,19 @@
 
              <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-
-           </div>
-           <div class="modal-body">
-             <!-- Adding sign up to body of modal-->
              <form id="sign-up" class="border">
                <fieldset>
                  <legend>Sign Up!</legend>
                  <input type="text" name="credentials[email]" placeholder="Email">
                  <input type="password" name="credentials[password]" placeholder="Password">
-                  <input type="password" name="credentials[password_confirmation]" placeholder="Password">
-                 <input type="submit" value="Sign up!">
+                  <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                 <input type="submit" value="Sign Up!">
                </fieldset>
              </form>
+           </div>
+           <div class="modal-body">
+             <!-- Adding sign up to body of modal-->
+
              <p class="sign-up-message"></p>
            </div>
            <div class="modal-footer">
@@ -44,7 +44,7 @@
          </div>
        </div>
      </div>
-      <button type="button" class="btn btn-primary" data-toggle="modal"
+      <button type="button" id="sign-in-button" class="btn btn-primary" data-toggle="modal"
            data-target="#signInModal">Sign In</button>
       <!-- Creating a sign in modal on my application-->
            <div class="modal fade" id="signInModal">
@@ -76,7 +76,7 @@
 
                  </div>
                </div>
-               <button type="button" class="btn btn-primary" data-toggle="modal"
+               <button type="button" id='change-password-button' class="btn btn-primary" data-toggle="modal"
                     data-target="#changePasswordModal">Change Password</button>
                <!-- Creating a change password modal on my application-->
                     <div class="modal fade" id="changePasswordModal">
@@ -92,11 +92,11 @@
                             <!-- Adding change password  to body of modal-->
                             <form id="change-password" class="border">
                               <fieldset>
-                                <legend>Change Password!</legend>
-                                <input type="text" name="credentials[passwordl]" placeholder="New Password">
-                                <input type=" New Password" name="credentials[password]" placeholder=" Confirm Password">
-                                <input type="submit" value="New Password!">
-                              </fieldset>
+                              <legend>Change Password!</legend>
+                              <input type="password" name="passwords[old]" placeholder="Old Password">
+                              <input type="password" name="passwords[new]" placeholder="New Password">
+                              <input type="submit" value="Change Password" class="btn btn-danger">
+                            </fieldset>
                             </form>
                              <p class="change-password-message"></p>
                           </div>
@@ -106,10 +106,7 @@
                         </div>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-
-
-     data-target="#signOutModal">Sign Out</button>
+                    <button type="button"  id="sign-out-button" class="btn btn-primary" data-toggle="modal" data-target="#signOutModal">Sign Out</button>
 <!-- Creating a sign out modal on my application-->
      <div class="modal fade" id="signOutModal">
        <div class="modal-dialog">
@@ -117,7 +114,7 @@
            <div class="modal-header">
 
              <h5 class="modal-title" id="signOutModalLabel">Sign Out</h5>
-             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+             <button type="button"  class="close" data-dismiss="modal"><span>&times;</span></button>
 
            </div>
            <div class="modal-body">
@@ -142,7 +139,8 @@
     <h2 class="Draw"></h2>
 
    <!-- Adding title-->
-    <div class="boardcontainer" >
+   <div id='show'>
+    <div class="boardcontainer">
     <!-- Adding game boxes-->
                  <div id="0" class="box boxleft boxtop" ></div>
                  <div id="1"  class="box boxtop"></div>
@@ -154,26 +152,16 @@
                  <div id="7" class="box boxbottom"></div>
                  <div id="8" class="box boxright boxbottom"></div>
     </div>
+  </div>
 
 <!-- Adding Restart Game-->
-      <form id= "begin-game">
-      <button type='submit' class='btn btn-default'>Begin Game</button>
-      </form>
-      <br>
-<!-- Adding Restart Game-->
-      <form id="restart-game">
-      <button type='submit' class='btn btn-default'>Restart Game</button>
-      </form>
-<!-- Adding end game button-->
-      <br>
-      <form id="end-game">
-      <button type='submit' class='btn btn-default'>End Game</button>
+      <div>
+        <form id="restart-game">
+        <button type='submit' id="restart-button"  class='btn btn-default'>Restart Game</button>
         </form>
-        <!-- Adding end game button-->
-              <br>
-              <form id="log-out">
-              <button type='submit' class='btn btn-default'>Log Out</button>
-                </form>
+      </div>
+<!-- Adding end game button-->
+
 
 
 

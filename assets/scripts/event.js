@@ -9,10 +9,8 @@ const copyNewGameData = data => {
 }
 
 const onSignUp = event => {
-  console.log('in onSignUp')
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   // takes this data and sends it to our server
   // using an HTTP request (POST)
   api.signUp(data)
@@ -21,21 +19,19 @@ const onSignUp = event => {
 }
 
 const onChangePassword = event => {
-  console.log('in onChangePassword')
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   // takes this data and sends it to our server
   // using an HTTP request (POST)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
+  $(event.target).trigger('reset')
 }
+
 const onSignIn = event => {
-  console.log('in onSignIn')
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   // takes this data and sends it to our server
   // using an HTTP request (POST)
   api.signIn(data)
@@ -44,50 +40,28 @@ const onSignIn = event => {
 }
 
 const onSignOut = event => {
-  console.log('out onLogOut')
   event.preventDefault()
   const data = getFormFields(event.target)
   // takes this data and sends it to our server
   // using an HTTP request (POST)
   api.signOut(data)
-    .then(ui.signOutSuccess)
+    .then(ui.signOut)
     .catch(ui.signOutFailure)
 }
 
-const onBeginGame = event => {
-  console.log('in onBeginGame')
+const onRestartGame = event => {
   event.preventDefault()
-  api.beginGame()
-    .then(copyNewGameData)
+  // const data = getFormFields(event.target)
+  // api.createGameAPI(data)
+  //   .then(ui.createGameSuccess)
 }
 
-const onRestartGame = event => {
-  console.log('ionRestartGame')
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  console.log(data)
-}
-const onEndGame = event => {
-  console.log('onEndGame')
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  console.log(data)
-}
-const onLogOut = event => {
-  console.log('onLogOut')
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  console.log(data)
-}
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
-  onBeginGame,
-  onRestartGame,
-  onEndGame,
-  onLogOut
+  onRestartGame
 }
 
 // $('#sign-up').on('submit', event.onSignUp)

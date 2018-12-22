@@ -6,15 +6,15 @@ const event = require('./event.js')
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
+
+
 $(() => {
   $('#sign-up').on('submit', event.onSignUp)
   $('#sign-in').on('submit', event.onSignIn)
   $('#sign-out').on('submit', event.onSignOut)
   $('#change-password').on('submit', event.changePassword)
-  $('#begin-game').on('submit', event.onBeginGame)
   $('#restart-game').on('submit', event.onRestartGame)
-  $('#end-game').on('submit', event.onEndGame)
-  $('#log-out').on('submit', event.onLogOut)
+
 
   const player1 = 'X'
   const player2 = 'O'
@@ -22,8 +22,8 @@ $(() => {
   let moves = 0
   let currentTurn = 'X'
 
-  const gameArray = ['', '', '', '', '', '', '', '', '']
-
+  let gameArray = ['', '', '', '', '', '', '', '', '']
+  let gameOver = false
   const winningCombinations = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
   // determined the winningCombinations on the board
 
@@ -62,6 +62,19 @@ $(() => {
     const box7 = $('#6').text()
     const box8 = $('#7').text()
     const box9 = $('#8').text()
+
+    // reset the gameBoard
+    const restartGame = () => {
+      $('#restart-game').click(function () {
+        gameArray = ['', '', '', '', '', '', '', '', '']
+        currentTurn = 0
+        gameOver = false
+        // console.log(currentTurn)
+        $('.box').empty()
+        $('.boardcontainer').show()
+        // event.createGameAPI()
+      })
+    }
 
     const checkTieGame = function () {
       if (moves === 9) {
@@ -140,8 +153,10 @@ $(() => {
       $('.Draw').hide()
     }
     checkTieGame()
+    restartGame()
   }
 })
+
 // assigning all the boxing on the gameboard a value
 
 // diagram of gameboard assigned #1-9
