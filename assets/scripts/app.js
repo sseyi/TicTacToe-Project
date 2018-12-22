@@ -29,14 +29,11 @@ $(() => {
 
   $('.box').click(function (event) {
     moves++
-    console.log('clicked')
     // click event: when user clicks on
     const box = $(event.target)
-    console.log(box)
+    // console.log(box)
     if (box.text() === '') {
       box.html(currentTurn)
-      console.log(currentTurn)
-      console.log(event)
       gameArray[event.currentTarget.id] = currentTurn
 
 
@@ -48,7 +45,7 @@ $(() => {
         currentTurn = 'X'
       }
     } else {
-      console.log('click on empty square')
+      currentTurn = ''
     }
   })
 
@@ -85,7 +82,7 @@ $(() => {
     if (box1 === 'X' && box2 === 'X' && box3 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
       $('.Draw').hide()
-      console.log('Win')
+      // console.log('Win')
     }
     if (box4 === 'X' && box5 === 'X' && box6 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')

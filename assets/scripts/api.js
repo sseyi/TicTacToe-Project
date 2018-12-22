@@ -49,6 +49,17 @@ const beginGame = () => {
   })
 }
 
+const createGameAPI = data => {
+  // console.log(store)
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const signOut = data => {
   return $.ajax({
     url: config.apiUrl + '/sign-out',
@@ -64,5 +75,6 @@ module.exports = {
   signIn,
   changePassword,
   beginGame,
-  signOut
+  signOut,
+  createGameAPI
 }

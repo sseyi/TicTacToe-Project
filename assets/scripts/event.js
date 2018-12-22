@@ -51,8 +51,8 @@ const onSignOut = event => {
 
 const onRestartGame = event => {
   event.preventDefault()
-  // const data = getFormFields(event.target)
-  // api.createGameAPI(data)
+  const data = getFormFields(event.target)
+  api.createGameAPI(data)
   //   .then(ui.createGameSuccess)
 }
 
