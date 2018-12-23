@@ -46,7 +46,11 @@ const signOut = data => {
   $('.sign-out-message').html('Sign Out Successful!')
   $('#sign-out')[0].reset()
   $('#show').hide()
+  $('#sign-in-button').show()
   $('#sign-up-button').show()
+  $('#sign-out-button').hide()
+  $('#change-password-button').hide()
+  $('#restart-button').hide()
 }
 
 const restartGame = data => {

@@ -35,8 +35,7 @@ $(() => {
     if (box.text() === '') {
       box.html(currentTurn)
       gameArray[event.currentTarget.id] = currentTurn
-
-
+      console.log(gameArray)
       winCheck()
       // when box is clicked will assign either 'X' or 'O'
       if (currentTurn === 'X') {
@@ -45,7 +44,7 @@ $(() => {
         currentTurn = 'X'
       }
     } else {
-      currentTurn = ''
+      gameOver = true
     }
   })
 
@@ -60,12 +59,11 @@ $(() => {
     const box8 = $('#7').text()
     const box9 = $('#8').text()
 
+
     // reset the gameBoard
     const restartGame = () => {
       $('#restart-game').click(function () {
         gameArray = ['', '', '', '', '', '', '', '', '']
-        currentTurn = 0
-        gameOver = false
         // console.log(currentTurn)
         $('.box').empty()
         $('.boardcontainer').show()
@@ -76,78 +74,111 @@ $(() => {
     const checkTieGame = function () {
       if (moves === 9) {
         $('.Draw').text('The Game is a Draw!')
+        gameOver = true
       }
     }
     // assigning the winningCombinations for 'X' in all rows
     if (box1 === 'X' && box2 === 'X' && box3 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+
       // console.log('Win')
     }
     if (box4 === 'X' && box5 === 'X' && box6 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box7 === 'X' && box8 === 'X' && box9 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     // assigning the winningCombinations for 'X' in all columns
     if (box1 === 'X' && box4 === 'X' && box7 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box2 === 'X' && box5 === 'X' && box8 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box3 === 'X' && box6 === 'X' && box9 === 'X') {
       // assign the winningCombinations for 'X' diagnally
       $('.Winner').text('Player "X" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box1 === 'X' && box5 === 'X' && box9 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box3 === 'X' && box5 === 'X' && box7 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     // assigning the winningCombinations for 'O' in all rows
     if (box1 === 'O' && box2 === 'O' && box3 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box4 === 'O' && box5 === 'O' && box6 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box7 === 'O' && box8 === 'O' && box9 === 'O') {
 // assigning the winningCombinations for 'O' in all columns
       $('.Winner').text('Player "O" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box1 === 'O' && box4 === 'O' && box7 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box2 === 'O' && box5 === 'O' && box8 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box3 === 'O' && box6 === 'O' && box9 === 'O') {
       // assign the winningCombinations for 'O' diagnally
       $('.Winner').text('Player "O" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box1 === 'O' && box5 === 'O' && box9 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     if (box3 === 'O' && box5 === 'O' && box7 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
       $('.Draw').hide()
+      gameOver = true
+      currentTurn = ''
     }
     checkTieGame()
     restartGame()
