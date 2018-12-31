@@ -54,6 +54,13 @@ body {
   //flex-wrap: wrap;
 }
 
+.center {
+  margin-left: 525px;
+}
+.centertwo {
+  margin-left: 95px;
+}
+
  .box {
   justify-content: center;
   text-align: center;
@@ -63,7 +70,7 @@ body {
 }
 //modal css
 .btn {
-  margin: auto;
+  // margin: auto;
   background-color: black;
   color: white;
 
