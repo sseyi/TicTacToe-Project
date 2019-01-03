@@ -70,6 +70,16 @@ const signOut = data => {
   })
 }
 
+const updateGameAPI = (boxId,currentTurn) => {
+  return $.ajax({
+    url: config.apiUrl + '/games/' ,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,

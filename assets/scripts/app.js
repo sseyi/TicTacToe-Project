@@ -31,8 +31,12 @@ $(() => {
 
     $('.box').click(function (event) {
       if (!game.gameOver) {
+
         moves++
         const box = $(this)
+        //update the move on the api with the box id(which references cell array) and current player
+        //events]
+        events.onUpdateGame(box.attr('id'),currentTurn)
         box.html(currentTurn)
         gameArray[event.currentTarget.id] = currentTurn
         console.log(gameArray)

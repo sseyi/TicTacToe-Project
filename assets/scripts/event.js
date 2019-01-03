@@ -56,6 +56,13 @@ const onRestartGame = event => {
   //   .then(ui.createGameSuccess)
 }
 
+//onUpdate game event -- send to api with box id and player move
+const onUpdateGame = (event, boxId, currentTurn) => {
+  event.preventDefault()
+  api.updateGameAPI(boxId,currentTurn)
+  .then(console.log)
+  .catch(console.error)
+}
 module.exports = {
   onSignUp,
   onSignIn,
