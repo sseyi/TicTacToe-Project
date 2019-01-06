@@ -5,6 +5,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('./store.js')
 const copyNewGameData = data => {
+  console.log('inside copyNewGameData', data)
   store.game = data.game
 }
 
@@ -36,6 +37,8 @@ const onSignIn = event => {
   // using an HTTP request (POST)
   api.signIn(data)
     .then(ui.signInSuccess)
+    .then(onRestartGame)
+    // .then(copyNewGameData)
     .catch(ui.signUpFailure)
 }
 
@@ -49,26 +52,35 @@ const onSignOut = event => {
     .catch(ui.signOutFailure)
 }
 
-const onRestartGame = event => {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  api.createGameAPI(data)
-  //   .then(ui.createGameSuccess)
+const onRestartGame = () => {
+  api.createGameAPI()
+    .then(ui.createGameSuccess)
 }
 
 //onUpdate game event -- send to api with box id and player move
-const onUpdateGame = (event, boxId, currentTurn) => {
-  event.preventDefault()
-  api.updateGameAPI(boxId,currentTurn)
-  .then(console.log)
+const onUpdateGame = (boxId, currentTurn) => {
+const dataObj = {
+  "game": {
+    "cell": {
+      "index": boxId,
+      "value": currentTurn
+    },
+    "over": false
+  }
+}
+
+  api.updateGameAPI(dataObj)
+  .then((data) => console.log ('after patch, array on API is', data.game.cells))
   .catch(console.error)
+
 }
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
-  onRestartGame
+  onRestartGame,
+  onUpdateGame
 }
 
 // $('#sign-up').on('submit', event.onSignUp)

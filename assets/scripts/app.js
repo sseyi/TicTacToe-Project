@@ -1,5 +1,5 @@
 'use strict'
-const event = require('./event.js')
+const events = require('./event.js')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -9,11 +9,12 @@ const event = require('./event.js')
 
 
 $(() => {
-  $('#sign-up').on('submit', event.onSignUp)
-  $('#sign-in').on('submit', event.onSignIn)
-  $('#sign-out').on('submit', event.onSignOut)
-  $('#change-password').on('submit', event.changePassword)
-  $('#restart-game').on('submit', event.onRestartGame)
+  $('#sign-up').on('submit', events.onSignUp)
+  $('#sign-in').on('submit', events.onSignIn)
+  $('#sign-out').on('submit', events.onSignOut)
+  $('#change-password').on('submit', events.changePassword)
+
+
 
 
   const player1 = 'X'
@@ -37,6 +38,8 @@ $(() => {
         //update the move on the api with the box id(which references cell array) and current player
         //events]
         events.onUpdateGame(box.attr('id'),currentTurn)
+        console.log (box)
+        console.log (currentTurn)
         box.html(currentTurn)
         gameArray[event.currentTarget.id] = currentTurn
         console.log(gameArray)
@@ -50,7 +53,19 @@ $(() => {
     }
 })
 
-
+// reset the gameBoard
+const restartGame = () => {
+    gameArray = ['', '', '', '', '', '', '', '', '']
+    // console.log(currentTurn)
+    $('.box').empty()
+    $('.boardcontainer').show()
+    $('.Winner').hide()
+    $('.Draw').hide()
+    console.log('restart1')
+    events.onRestartGame()
+    game.gameOver = false
+  }
+  $('#restart-button').on('click', restartGame)
 
   const winCheck = () => {
     const box1 = $('#0').text()
@@ -63,149 +78,116 @@ $(() => {
     const box8 = $('#7').text()
     const box9 = $('#8').text()
 
-    // reset the gameBoard
-    const restartGame = () => {
-      $('#restart-game').click(function () {
-        gameArray = ['', '', '', '', '', '', '', '', '']
-        // console.log(currentTurn)
-        $('.box').empty()
-        $('.boardcontainer').show()
-        $('.Winner').hide()
-        $('.Draw').hide()
-        // event.createGameAPI()
-        game.gameOver = false
-      })
-    }
 
-    const checkTieGame = function () {
-      if (moves === 9) {
-        $('.Draw').text('The Game is a Draw!')
-        game.gameOver = true
-        console.log ('game over')
-      }
-    }
+
     // assigning the winningCombinations for 'X' in all rows
     if (box1 === 'X' && box2 === 'X' && box3 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
-      $('.Draw').show()
+      $('.Winner').show()
       moves = 0
       game.gameOver = true
-      $('.Winner').hide()
+
 
       // console.log('Win')
-    }
-    if (box4 === 'X' && box5 === 'X' && box6 === 'X') {
+    } else if (box4 === 'X' && box5 === 'X' && box6 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
-      $('.Draw').show()
+      $('.Winner').show()
+      moves = 0
+      game.gameOver = true
+
+    } else if (box7 === 'X' && box8 === 'X' && box9 === 'X') {
+      $('.Winner').text('Player "X" is the Winner!')
+      $('.Winner').show()
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    if (box7 === 'X' && box8 === 'X' && box9 === 'X') {
+    } else if (box1 === 'X' && box4 === 'X' && box7 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
-      $('.Draw').show()
+      $('.Winner').show()
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    // assigning the winningCombinations for 'X' in all columns
-    if (box1 === 'X' && box4 === 'X' && box7 === 'X') {
+    } else if (box2 === 'X' && box5 === 'X' && box8 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
-      $('.Draw').show()
+      $('.Winner').show()
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    if (box2 === 'X' && box5 === 'X' && box8 === 'X') {
-      $('.Winner').text('Player "X" is the Winner!')
-      $('.Draw').show()
-      moves = 0
-      game.gameOver = true
-      $('.Winner').show()
-    }
-    if (box3 === 'X' && box6 === 'X' && box9 === 'X') {
+    } else if (box3 === 'X' && box6 === 'X' && box9 === 'X') {
       // assign the winningCombinations for 'X' diagnally
       $('.Winner').text('Player "X" is the Winner!')
-      $('.Draw').show()
+      $('.Winner').show()
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    if (box1 === 'X' && box5 === 'X' && box9 === 'X') {
+    } else if (box1 === 'X' && box5 === 'X' && box9 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
-      $('.Draw').show()
+
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    if (box3 === 'X' && box5 === 'X' && box7 === 'X') {
+    } else if (box3 === 'X' && box5 === 'X' && box7 === 'X') {
       $('.Winner').text('Player "X" is the Winner!')
-      $('.Draw').show()
+
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    // assigning the winningCombinations for 'O' in all rows
-    if (box1 === 'O' && box2 === 'O' && box3 === 'O') {
+    } else if (box1 === 'O' && box2 === 'O' && box3 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
-      $('.Draw').show()
+
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    if (box4 === 'O' && box5 === 'O' && box6 === 'O') {
+    } else if (box4 === 'O' && box5 === 'O' && box6 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
-      $('.Draw').show()
+
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    if (box7 === 'O' && box8 === 'O' && box9 === 'O') {
-// assigning the winningCombinations for 'O' in all columns
+    } else if (box7 === 'O' && box8 === 'O' && box9 === 'O') {
+     // assigning the winningCombinations for 'O' in all columns
       $('.Winner').text('Player "O" is the Winner!')
-      $('.Draw').show()
+
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    if (box1 === 'O' && box4 === 'O' && box7 === 'O') {
+    } else if (box1 === 'O' && box4 === 'O' && box7 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
-      $('.Draw').show()
+
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    if (box2 === 'O' && box5 === 'O' && box8 === 'O') {
+    } else if (box2 === 'O' && box5 === 'O' && box8 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
-      $('.Draw').show()
+
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    if (box3 === 'O' && box6 === 'O' && box9 === 'O') {
+    } else if (box3 === 'O' && box6 === 'O' && box9 === 'O') {
       // assign the winningCombinations for 'O' diagnally
       $('.Winner').text('Player "O" is the Winner!')
-      $('.Draw').show()
+      $('.Winner').show()
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    if (box1 === 'O' && box5 === 'O' && box9 === 'O') {
+    } else if (box1 === 'O' && box5 === 'O' && box9 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
-      $('.Draw').show()
+      $('.Winner').show()
       moves = 0
       game.gameOver = true
       $('.Winner').show()
-    }
-    if (box3 === 'O' && box5 === 'O' && box7 === 'O') {
+    } else if (box3 === 'O' && box5 === 'O' && box7 === 'O') {
       $('.Winner').text('Player "O" is the Winner!')
-      $('.Draw').show()
+      $('.Winner').show()
       moves = 0
       game.gameOver = true
       $('.Winner').show()
+    } else if (moves === 9) {
+      $('.Draw').text('The Game is a Draw!')
+      $('.Draw').show()
+      game.gameOver = true
+      console.log ('game over')
     }
-    checkTieGame()
-    restartGame()
   }
 })
 

@@ -58,6 +58,12 @@ const restartGame = data => {
   // console.log('your being reached here')
 }
 
+const createGameSuccess = data => {
+  console.log(data)
+  store.id = data.game.id
+  console.log(store.id)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -66,5 +72,6 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOut,
-  restartGame
+  restartGame,
+  createGameSuccess
 }

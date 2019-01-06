@@ -70,13 +70,14 @@ const signOut = data => {
   })
 }
 
-const updateGameAPI = (boxId,currentTurn) => {
+const updateGameAPI = (data) => {
   return $.ajax({
-    url: config.apiUrl + '/games/' ,
+    url: config.apiUrl + '/games/' + store.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    }
+    },
+    data: data
   })
 }
 
@@ -86,5 +87,6 @@ module.exports = {
   changePassword,
   beginGame,
   signOut,
-  createGameAPI
+  createGameAPI,
+  updateGameAPI
 }
